@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
 
 
@@ -62,5 +62,6 @@ def add(request):
     form = BookForm(request.POST or None)
     if form.is_valid():
         form.save()
+        return redirect('books-index') #重新導向回XX頁
 
     return render(request, 'books/add.html', {'form': form})
