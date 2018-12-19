@@ -47,14 +47,20 @@ def add(request):
         #    price=price,
         #    introduction=introduction,
         #)
-    form = None
-    if request.method == 'POST':
-        form = BookForm(request.POST)
-        if form.is_valid():
-            Book.objects.create(**form.cleaned_data)
-            #return render(request, 'books/add.html', {'message': 'create success'})
-            #print(form.errors.get_json_data())
-        #return render(request, 'books/add.html', {'message': form.errors.get_json_data()})
-    else:
-        form = BookForm()
+    # form = None
+    # if request.method == 'POST':
+    #     form = BookForm(request.POST)
+    #     if form.is_valid():
+    #         Book.objects.create(**form.cleaned_data)
+    #         #return render(request, 'books/add.html', {'message': 'create success'})
+    #         #print(form.errors.get_json_data())
+    #     #return render(request, 'books/add.html', {'message': form.errors.get_json_data()})
+    # else:
+    #     form = BookForm()
+    # return render(request, 'books/add.html', {'form': form})
+
+    form = BookForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
     return render(request, 'books/add.html', {'form': form})
