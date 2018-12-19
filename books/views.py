@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
-
+from django.contrib import messages
 
 from .forms import BookForm
 from .models import Book
@@ -62,6 +62,7 @@ def add(request):
     form = BookForm(request.POST or None)
     if form.is_valid():
         form.save()
+        messages.success(request, '新增成功')
         return redirect('books-index') #重新導向回XX頁
 
     return render(request, 'books/add.html', {'form': form})

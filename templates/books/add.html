@@ -1,13 +1,16 @@
 {% extends "layout.html" %}
+{% load bootstrap4 %}
 
 {% block main %}
     <div class="row">
         <div class="col">
-
+            <h2>新增書籍</h2>
             <!--{{ message }}-->
             <form action="" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                {% bootstrap_form form %}
+                <button type="submit" class="btn btn-outline-info float-right">Send</button>
+                <!--{{ form.as_p }}-->
                 <!--<input type="text" name="ttt" placeholder="AAA">-->
 
                 <!--<p>
@@ -23,11 +26,11 @@
                 <p>
                     <label for="id_introduction">簡介</label>
                     <textarea name="introduction" id="id_introduction" cols="30" rows="10"></textarea>
-                </p>-->
+                </p>
 
 
 
-                <button type="submit">Send</button>
+                <button type="submit">Send</button>-->
             </form>
         </div>
     </div>
