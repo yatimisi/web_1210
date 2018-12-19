@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 
+
+from .forms import BookForm
 from .models import Book
 
 def index(request):
@@ -18,7 +20,41 @@ def show(request, pk):
     return render(request, 'books/show.html', {'book': book})
 
 def add(request):
-    if request.method == 'POST':
-        print(request.POST)
 
-    return render(request, 'books/add.html')
+    #if request.method == 'POST':
+        # print(request.POST)
+
+        #name = request.POST.get('name')
+        #price = request.POST.get('price')
+        #introduction = request.POST.get('introduction')
+
+        #if not name:
+        #    return render(request, 'books/add.html', {'message': 'name can not be bull'})
+
+        #if not price.isdigit():
+        #    pass
+
+        #price = int(price)
+
+        #if price <= 0:
+        #    pass
+
+        #if not introduction:
+        #    pass
+
+        #Book.objects.create(
+        #    name=name,
+        #    price=price,
+        #    introduction=introduction,
+        #)
+    form = None
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            Book.objects.create(**form.cleaned_data)
+            #return render(request, 'books/add.html', {'message': 'create success'})
+            #print(form.errors.get_json_data())
+        #return render(request, 'books/add.html', {'message': form.errors.get_json_data()})
+    else:
+        form = BookForm()
+    return render(request, 'books/add.html', {'form': form})
