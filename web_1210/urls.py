@@ -20,8 +20,8 @@ from django.shortcuts import redirect
 from . import views
 from books import views as book_views
 
-def root(request):
-    return redirect('books-index')
+# def root(request):
+#     return redirect('books-index')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,7 +29,7 @@ urlpatterns = [
     # path('<str:name>/', views.hello),
     # path('s/<int:number>/', views.s),
     # path('l/<int:number1>/<int:number2>/', views.l),
-    path('', root, name='root'),
+    path('', lambda request: redirect('books-index'), name='root'),
     path('books/', book_views.index, name='books-index'),
     path('books/<int:pk>/', book_views.show, name='book-show'),
     path('books/add/', book_views.add, name='books-add'),
