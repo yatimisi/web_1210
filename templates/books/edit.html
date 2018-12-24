@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% load bootstrap4 %}
+
+{% block main %}
+    <div class="row">
+        <div class="col">
+            <h2>更新書籍</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button type="submit" class="btn btn-outline-info float-right">Send</button>
+            </form>
+        </div>
+    </div>
+{% endblock main %}

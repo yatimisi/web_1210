@@ -12,3 +12,6 @@ class BookForm(forms.ModelForm):
         model = Book
         #fields = ('name', 'introduction')
         fields = '__all__'
+
+class DeleteConfirmForm(forms.Form):
+    check = forms.BooleanField(label='你群定要刪除嗎？')
