@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col">
-        <a href="{% url 'books-add' %}" class="btn btn-outline-info float-right">Add book</a>
+        <a href="{% url 'books:add' %}" class="btn btn-outline-info float-right">Add book</a>
         <h2>Book List</h2>
         <hr>
         <table class="table table-striped">
@@ -20,7 +20,7 @@
                     <tr>
                         <td>{{ book.id }}</td>
                         <!--/books/{{ book.id }}/-->
-                        <td><a href="{% url 'book-show' book.id %}">{{ book.name }}</a></td>
+                        <td><a href="{% url 'books:show' book.id %}">{{ book.name }}</a></td>
                         <td>{{ book.price }}</td>
                     </tr>
                 {% empty %}

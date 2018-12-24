@@ -5,33 +5,7 @@
     <div class="row">
         <div class="col">
             <h2>新增書籍</h2>
-            <!--{{ message }}-->
-            <form action="" method="post">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                <button type="submit" class="btn btn-outline-info float-right">Send</button>
-                <!--{{ form.as_p }}-->
-                <!--<input type="text" name="ttt" placeholder="AAA">-->
-
-                <!--<p>
-                    <label for="id_name">書名</label>
-                    <input type="text" name="name" id="id_name" required>
-                </p>
-
-                <p>
-                    <label for="id_price">價格</label>
-                    <input type="text" name="price" id="id_price">
-                </p>
-
-                <p>
-                    <label for="id_introduction">簡介</label>
-                    <textarea name="introduction" id="id_introduction" cols="30" rows="10"></textarea>
-                </p>
-
-
-
-                <button type="submit">Send</button>-->
-            </form>
+            {% include 'share/form.html'%}
         </div>
     </div>
 {% endblock main %}

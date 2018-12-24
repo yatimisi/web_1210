@@ -63,7 +63,7 @@ def add(request):
     if form.is_valid():
         form.save()
         messages.success(request, '新增成功')
-        return redirect('books-index') #重新導向回XX頁
+        return redirect('books:index') #重新導向回XX頁
 
     return render(request, 'books/add.html', {'form': form})
 
@@ -74,7 +74,7 @@ def edit(request, pk):
     if form.is_valid():
         form.save()
         messages.success(request, '更新成功')
-        return redirect('books-index') #重新導向回XX頁
+        return redirect('books:index') #重新導向回XX頁
 
     return render(request, 'books/edit.html', {'form': form})
 
@@ -85,9 +85,9 @@ def delete(request, pk):
     if form.is_valid() and form.cleaned_data['check']:
         book.delete()
         messages.success(request, '刪除成功')
-        return redirect('books-index')
+        return redirect('books:index')
 
     return render(request, 'books/delete.html', {'form': form})
     # book.delete()
     # messages.success(request, '刪除成功')
-    # return redirect('books-index')
+    # return redirect('books:index')
