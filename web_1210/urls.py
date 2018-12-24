@@ -22,6 +22,9 @@ from django.shortcuts import redirect
 
 # def root(request):
 #     return redirect('books-index')
+admin.site.site_title = 'Book 網站管理'
+admin.site.site_header = 'Book 管理'
+
 
 urlpatterns = [
     # django admin jet
@@ -31,7 +34,7 @@ urlpatterns = [
     # path('<str:name>/', views.hello),
     # path('s/<int:number>/', views.s),
     # path('l/<int:number1>/<int:number2>/', views.l),
-    path('', lambda request: redirect('books-index'), name='root'), # lambda=不具名變數
+    path('', lambda request: redirect('books:index'), name='root'), # lambda=不具名變數
     path('books/', include('books.urls')),
 
     path('jet/', include('jet.urls', 'jet')),
