@@ -24,11 +24,16 @@ from django.shortcuts import redirect
 #     return redirect('books-index')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # django admin jet
+    # https://github.com/geex-arts/django-jet
+
     # path('', views.root),
     # path('<str:name>/', views.hello),
     # path('s/<int:number>/', views.s),
     # path('l/<int:number1>/<int:number2>/', views.l),
     path('', lambda request: redirect('books-index'), name='root'), # lambda=不具名變數
     path('books/', include('books.urls')),
+
+    path('jet/', include('jet.urls', 'jet')),
+    path('admin/', admin.site.urls),
 ]
