@@ -82,7 +82,7 @@ def edit(request, pk):
 def delete(request, pk):
     book = get_object_or_404(Book, pk=pk)
     form = DeleteConfirmForm(request.POST or None)
-    if form.is_valid():
+    if form.is_valid() and form.cleaned_data['check']:
         book.delete()
         messages.success(request, '刪除成功')
         return redirect('books-index')
