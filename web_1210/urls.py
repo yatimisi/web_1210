@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 
-# from . import views
 # from books import views as book_views
 
 # def root(request):
@@ -30,10 +29,7 @@ urlpatterns = [
     # django admin jet
     # https://github.com/geex-arts/django-jet
 
-    # path('', views.root),
-    # path('<str:name>/', views.hello),
-    # path('s/<int:number>/', views.s),
-    # path('l/<int:number1>/<int:number2>/', views.l),
+
     path('', lambda request: redirect('books:index'), name='root'), # lambda=不具名變數
     path('books/', include('books.urls')),
 
